@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vinyl Collection</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Vinyl Collection</h1>
+      <p id="subtitle" class="subtitle">Loading&hellip;</p>
+    </div>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Search artist, title, label, catalogue number&hellip;"
+        autocomplete="off" spellcheck="false">
+      <button id="clear-search" class="icon-btn" title="Clear search" hidden>&times;</button>
+    </div>
+    <div class="view-toggle" role="group" aria-label="View mode">
+      <button data-view="list" class="active">List</button>
+      <button data-view="grid">Covers</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="filters" id="filters">
+      <div class="filters-head">
+        <h2>Filters</h2>
+        <button id="reset-filters" class="link-btn">Reset</button>
+      </div>
+
+      <label class="field">
+        <span>Sort by</span>
+        <select id="sort">
+          <option value="artist">Artist (A&ndash;Z)</option>
+          <option value="artist-desc">Artist (Z&ndash;A)</option>
+          <option value="title">Title (A&ndash;Z)</option>
+          <option value="year-asc">Year (oldest first)</option>
+          <option value="year-desc">Year (newest first)</option>
+          <option value="rating">Rating (high first)</option>
+          <option value="label">Label</option>
+        </select>
+      </label>
+
+      <div class="field">
+        <span>Type</span>
+        <div id="f-kind" class="chips"></div>
+      </div>
+
+      <div class="field">
+        <span>Genre</span>
+        <div id="f-genre" class="chips scroll"></div>
+      </div>
+
+      <div class="field">
+        <span>Decade</span>
+        <div id="f-decade" class="chips"></div>
+      </div>
+
+      <label class="field">
+        <span>Minimum rating</span>
+        <select id="f-rating">
+          <option value="0">Any</option>
+          <option value="3">3 stars and up</option>
+          <option value="4">4 stars and up</option>
+          <option value="5">5 stars only</option>
+        </select>
+      </label>
+
+      <button id="export-csv" class="secondary-btn">Export this selection to CSV</button>
+    </aside>
+
+    <main>
+      <div class="results-bar">
+        <span id="result-count"></span>
+        <span id="active-filters" class="active-filters"></span>
+      </div>
+      <div id="results" class="results"></div>
+      <div id="sentinel" class="sentinel"></div>
+    </main>
+  </div>
+
+  <div id="detail" class="detail" hidden aria-hidden="true">
+    <div class="detail-inner" role="dialog" aria-modal="true" aria-label="Release details">
+      <button id="detail-close" class="icon-btn detail-close" title="Close">&times;</button>
+      <div id="detail-body"></div>
+    </div>
+  </div>
+
+  <script src="data/collection.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+
+</html>
